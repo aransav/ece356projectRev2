@@ -10,6 +10,7 @@ import ca.uw.proj.model.Appointment;
 import ca.uw.proj.model.DoctorPatient;
 import ca.uw.proj.model.Patient;
 import ca.uw.proj.model.Staff;
+import ca.uw.proj.model.User;
 import java.util.List;
 
 /**
@@ -26,6 +27,6 @@ public interface AppointmentService {
     public List<Appointment> getAppointmentForPatient(Patient patient);
     public List<Appointment> getAppointmentsForDate(java.sql.Date date);
     public List<Appointment> getAppointmentsForRange(java.sql.Date startDate, java.sql.Date endDate);
-    
+    public List<Appointment> getAppointmentsForUser(User u);
     
 }
