@@ -18,7 +18,7 @@ import javax.persistence.Table;
  *
  * @author siva
  */
-
+//comment
 @Entity
 @Table(name="_user")
 public class User implements Serializable {
