@@ -10,6 +10,7 @@ import ca.uw.proj.model.Appointment;
 import ca.uw.proj.model.DoctorPatient;
 import ca.uw.proj.model.Patient;
 import ca.uw.proj.model.Staff;
+import ca.uw.proj.model.User;
 import ca.uw.proj.service.AppointmentService;
 import ca.uw.proj.service.DoctorPatientService;
 import ca.uw.proj.service.UtilitiesService;
@@ -30,7 +31,9 @@ public class AppointmentServiceImpl implements AppointmentService {
 
     @Autowired
     private AppointmentDAO appointmentDAO;
+    @Autowired
     private DoctorPatientService doctorPatientService;
+    @Autowired
     private UtilitiesService utilitiesService;
 
     @Override
@@ -100,6 +103,25 @@ public class AppointmentServiceImpl implements AppointmentService {
             apps.addAll(getAppointmentsForDate(d));
         }
         return apps;
+    }
+
+    @Override
+    public List<Appointment> getAppointmentsForUser(User u) {
+        List<Appointment> appsAll = getAllAppointments();
+        List<Appointment> apps = new ArrayList<>();
+        
+        for (Appointment a: appsAll){
+            DoctorPatient dp = a.getDoctorPatient();
+            Staff doctor = dp.getDoctor();
+            Patient patient = dp.getPatient();
+            
+            if (doctor.getUser().equals(u) || patient.getUser().equals(u)){
+                apps.add(a);
+            }
+        }
+        
+        return apps;
+        
     }
 
 }
