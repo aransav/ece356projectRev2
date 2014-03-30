@@ -16,5 +16,5 @@ import ca.uw.proj.model.User;
 public interface PatientService {
     //comment
     public Patient getPatient(User u);
-    public Patient updatePatient(Patient patient);
+    public void updatePatient(Patient patient);
 }
