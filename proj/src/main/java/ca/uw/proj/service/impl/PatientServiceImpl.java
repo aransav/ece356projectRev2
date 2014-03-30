@@ -33,5 +33,10 @@ public class PatientServiceImpl implements PatientService {
             return null;
         }
     }
+
+    @Override
+    public void updatePatient(Patient patient) {
+        patientDAO.updatePatient(patient);
+    }
     
 }
